@@ -1,10 +1,14 @@
 from dotenv import load_dotenv
 import os
+import requests
+
+load_dotenv()
+print(os.getenv('STORE_ACCESS_TOKEN'))
 
 def ProductosInfo():
-    url = f"https://api.tiendanube.com/2025-03/{os.getenv("STORE_ID")}/products"
+    url = f"https://api.tiendanube.com/2025-03/{os.getenv('STORE_ID')}/products"
     headers = {
-        "Authorization": f"bearer {os.getenv("STORE_ACCESS_TOKEN")}"
+        "Authentication": f"bearer {os.getenv('STORE_ACCESS_TOKEN')}"
     }
 
     try:
@@ -16,9 +20,9 @@ def ProductosInfo():
         return {"error": "No se pudo obtener la información del producto."}
 
 def EstadoCompra(id_order):
-    url = f"https://api.tiendanube.com/2025-03/{os.getenv("STORE_ID")}/orders?number={id_order}"
+    url = f"https://api.tiendanube.com/2025-03/{os.getenv('STORE_ID')}/orders?number={id_order}"
     headers = {
-        "Authorization": f"bearer {os.getenv("STORE_ACCESS_TOKEN")}"
+            "Authentication": f"bearer {os.getenv('STORE_ACCESS_TOKEN')}"
     }
 
     try:
